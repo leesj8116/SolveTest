@@ -3,15 +3,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] input = bf.readLine().split(" ");
-        int N = Integer.parseInt(input[0]); // 포켓몬의 개수 N
-        int M = Integer.parseInt(input[1]); // 문제의 개수 M
+        // String.split => StringTokenizer로 변경
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+
+        int N = Integer.parseInt(st.nextToken()); // 포켓몬의 개수 N
+        int M = Integer.parseInt(st.nextToken()); // 문제의 개수 M
 
 //        System.out.printf("N = %d, M = %d\n", N, M);
         String[] library = new String[N];
