@@ -6,9 +6,9 @@
 
 ### 코드 개선
 
-1차 : `String.split` => `StringTokenizer` 사용 = 시간 축소 미미함 (100ms)
-2차 : 문자/숫자 입력 판단을 `NumberFormatException` => `Character.isDigit()` 사용 = 시간 축소 효과적 (500ms)
-3차 : 결과 출력을 필요할 때마다 `System.out.println()` => `BufferedWriter` 사용 = 시간 축소 효과적 (500ms)
+1차 : `String.split` => `StringTokenizer` 사용 = 시간 축소 미미함 (100ms)  
+2차 : 문자/숫자 입력 판단을 `NumberFormatException` => `Character.isDigit()` 사용 = 시간 축소 효과적 (500ms)  
+3차 : 결과 출력을 필요할 때마다 `System.out.println()` => `BufferedWriter` 사용 = 시간 축소 효과적 (500ms)  
 
 ### 의견
 
