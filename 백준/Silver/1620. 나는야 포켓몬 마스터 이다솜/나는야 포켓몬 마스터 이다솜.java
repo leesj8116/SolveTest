@@ -30,10 +30,12 @@ public class Main {
         // 문제 풀이
         for(int i = 0; i < M; i++) {
             String quiz = bf.readLine();    // 문제 입력
-            try {
+            
+            // 2차 개선 => 이름/번호 구분을 익셉션에서 첫글자의 문자/숫자 여부로 변경
+            if(Character.isDigit(quiz.charAt(0))) {
                 // 숫자일 경우
                 System.out.println(library[Integer.parseInt(quiz) - 1]);
-            } catch(NumberFormatException e) {
+            } else {
                 // 숫자가 아닐 경우
                 System.out.println(libMap.get(quiz));
             }
