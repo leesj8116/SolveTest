@@ -6,15 +6,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        // 1차 개선 : StringBuilder 사용
+        StringBuilder sb = new StringBuilder();
 
         String s = "*";
         while(!(s = br.readLine()).equals("*")) {
-            bw.write(String.format("%s is%s surprising.", s, solution(s) ? "" : " NOT"));
-            bw.newLine();
+            sb.append(s).append(" is").append(solution(s) ? "" : " NOT").append(" surprising.\n");
         }
 
-        bw.flush();
+        System.out.println(sb);
     }
 
     /**
@@ -30,12 +31,12 @@ public class Main {
             pocket.clear(); // 비우고 시작
 
             for(int k = 0; k < (s.length() - D - 1); k++) {
-                String item = String.format("%c%c", s.charAt(k), s.charAt(k + D + 1));  // 문자열 생성
+                String item = String.valueOf(s.charAt(k)) + s.charAt(k + D + 1);  // 문자열 생성
                 if(pocket.contains(item)) {
                     return false;       // 원소가 이미 존재하면 NOT 놀라운 문자열
-                } else {
-                    pocket.add(item);   // 원소가 존재하지 않으면 주머니에 추가
                 }
+
+                pocket.add(item);   // 원소가 존재하지 않으면 주머니에 추가
             }
         }
 
