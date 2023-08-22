@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -8,11 +6,26 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String N = br.readLine();       // 1 <= N <= 1_000_000_000
-        List<Character> collect = N.chars().mapToObj(c -> (char) c).sorted((o1, o2) -> o2 - o1).collect(Collectors.toList());
+        // 개선 : Collector 쓰지 말고 그냥 Array에 이진 정렬 적용
+        char[] arr = br.readLine().toCharArray();   // 1 <= N <= 1_000_000_000
+        int[] answer = new int[arr.length];
 
-        for(Character c : collect) {
-            bw.write(c);
+        for(int i = 0; i < arr.length; i++) {
+            answer[i] = arr[i] - '0';
+        }
+
+        int temp = 0;
+        for (int k = 0; k < arr.length - 1; k++) {
+            for (int m = k + 1; m < arr.length; m++) {
+                if (answer[k] < answer[m]) {
+                    temp = answer[k];
+                    answer[k] = answer[m];
+                    answer[m] = temp;
+                }
+            }
+        }
+        for(int i : answer) {
+            bw.write(('0' + i));
         }
         bw.newLine();
 
